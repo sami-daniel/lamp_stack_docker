@@ -8,7 +8,8 @@ services:
       - mysql-data:/var/lib/mysql
     ports:
       - 3306:3306
-  www:
+    restart: always
+  apache_www:
     container_name: lampstack_apache
     image: php:8.4.5RC1-apache
     volumes:
@@ -16,6 +17,7 @@ services:
     ports:
       - 80:80
       - 443:443
+    restart: always
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     ports:
@@ -23,5 +25,6 @@ services:
     environment:
       - PMA_HOST=mysqldb
       - PMA_PORT=3306
+    restart: always
 volumes:
   mysql-data:
