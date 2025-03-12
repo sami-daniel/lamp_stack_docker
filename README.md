@@ -15,12 +15,14 @@ mv lamp_stack_docker lamp_stack
 cd lamp_stack
 docker compose up -d
 ```
+Then you can type localhost/phpinfo.php on your browser. If everything is ok, the the php info
+will show up.
 
 The binds are the following, by default. Of course you can, and I recommend you, to alter 
 the default configs. 
 
-MYSQL Port -> 3306
-PHPMyAdmin -> 8000
+MYSQL Port -> 3306 <br>
+PHPMyAdmin -> 8000 <br>
 Apache Server -> 80 (So you can simple acess it through browser just typing localhost)
 
 The MySql root user does not have any password. So you have to setup one in MySql.
