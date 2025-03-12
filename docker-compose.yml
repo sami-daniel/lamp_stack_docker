@@ -1,0 +1,27 @@
+services:
+  mysqldb:
+    container_name: lampstack_mysql
+    image: mysql:latest
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=1
+    volumes:
+      - mysql-data:/var/lib/mysql
+    ports:
+      - 3306:3306
+  www:
+    container_name: lampstack_apache
+    image: php:8.4.5RC1-apache
+    volumes:
+      - ./www:/var/www/html
+    ports:
+      - 80:80
+      - 443:443
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - 8000:80
+    environment:
+      - PMA_HOST=mysqldb
+      - PMA_PORT=3306
+volumes:
+  mysql-data:
